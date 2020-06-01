@@ -1,0 +1,14 @@
+C:\munka\DOT NET\Legend of Heredur\bin\Debug\Legend of Heredur.exe.config
+C:\munka\DOT NET\Legend of Heredur\bin\Debug\Legend of Heredur.exe
+C:\munka\DOT NET\Legend of Heredur\bin\Debug\Legend of Heredur.pdb
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur.csprojAssemblyReference.cache
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\MainWindow.g.cs
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\App.g.cs
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur_MarkupCompile.cache
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur_MarkupCompile.lref
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\MainWindow.baml
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur.g.resources
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend_of_Heredur.Properties.Resources.resources
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur.csproj.GenerateResource.cache
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur.exe
+C:\munka\DOT NET\Legend of Heredur\obj\Debug\Legend of Heredur.pdb

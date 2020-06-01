@@ -1,0 +1,14 @@
+C:\munka\DOT NET\Legend of Heredur ItemCreator\bin\Debug\Legend of Heredur ItemCreator.exe.config
+C:\munka\DOT NET\Legend of Heredur ItemCreator\bin\Debug\Legend of Heredur ItemCreator.exe
+C:\munka\DOT NET\Legend of Heredur ItemCreator\bin\Debug\Legend of Heredur ItemCreator.pdb
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator.csprojAssemblyReference.cache
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\MainWindow.g.cs
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\App.g.cs
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator_MarkupCompile.cache
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator_MarkupCompile.lref
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\MainWindow.baml
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator.g.resources
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend_of_Heredur_ItemCreator.Properties.Resources.resources
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator.csproj.GenerateResource.cache
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator.exe
+C:\munka\DOT NET\Legend of Heredur ItemCreator\obj\Debug\Legend of Heredur ItemCreator.pdb

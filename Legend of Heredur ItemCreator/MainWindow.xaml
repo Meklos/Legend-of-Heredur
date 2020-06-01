@@ -1,0 +1,635 @@
+﻿<Window x:Class="Legend_of_Heredur_ItemCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Legend_of_Heredur_ItemCreator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="245,10,647,590" Width="500">
+            <WrapPanel x:Name="wp_itemIcons" HorizontalAlignment="Left" MinHeight="322" VerticalAlignment="Top" Width="500"/>
+        </ScrollViewer>
+        <StackPanel Margin="10,10,1164,611" Width="240">
+            <Label Content="Kép:" FontSize="20" FontWeight="Bold"/>
+            <Image x:Name="im_selected" HorizontalAlignment="Left" Height="205" Width="205"/>
+        </StackPanel>
+        <StackPanel Margin="68,294,674,46">
+            <StackPanel Height="38" Orientation="Horizontal">
+                <Label Content="Név:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <TextBox x:Name="tb_itemName" Width="400" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Height="38" Orientation="Horizontal">
+                <Label Content="Szint:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <TextBox x:Name="tb_itemLevel" Width="400" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Height="38" Orientation="Horizontal">
+                <Label Content="Szükséges szint:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <TextBox x:Name="tb_itemRequiedLevel" Width="400" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Height="38" Orientation="Horizontal">
+                <Label Content="Típus:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_itemType" FontSize="20"  Width="400" VerticalContentAlignment="Center" SelectionChanged="cb_itemType_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel x:Name="sp_itemDamage" Height="38" Visibility="Collapsed" Orientation="Horizontal" ToolTip="" ToolTipOpening="sp_itemPrimaryStat_ToolTipOpening">
+                <Label Content="Sebzés:" FontSize="20" Width="160" Margin="20,0" FontWeight="Bold"/>
+                <TextBox x:Name="tb_item_primaryStat_damageMax_randomMin" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="tb_item_primaryStat_damageMax_randomMax" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel x:Name="sp_itemDefense" Height="38"  Visibility="Collapsed" Orientation="Horizontal" ToolTip="" ToolTipOpening="sp_itemPrimaryStat_ToolTipOpening">
+                <Label Content="Védelem:" FontSize="20" Width="160" Margin="20,0" FontWeight="Bold"/>
+                <TextBox x:Name="tb_item_primaryStat_defenseMax_randomMin" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="tb_item_primaryStat_defenseMax_randomMax" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel  x:Name="sp_itemQuanity"  Height="38" Orientation="Horizontal" Visibility="Visible" >
+                <Label Content="Mennyiség:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <TextBox x:Name="tb_itemQuantityFrom" Width="120" FontSize="20" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="tb_itemQuantityTo" Width="120" FontSize="20" VerticalContentAlignment="Center"/>
+                <CheckBox x:Name="cb_isStackable" Cursor="Hand" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center" Content="Egybepakolható" Margin="10,0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel  x:Name="sp_itemPotionEffect"  Height="38" Orientation="Horizontal" Visibility="Collapsed" >
+                <Label Content="Hatás:" FontSize="20" Width="160" Margin="20,0" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_itemPotionEffect" Width="200" FontSize="20" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="tb_itemPotionEffectValue" Width="100" ToolTip="Hatás mértéke" FontSize="20" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="tb_itemPotionEffectDuration" Width="100" ToolTip="Hatás időtartama" FontSize="20" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel x:Name="sp_itemQuality" Height="38" Orientation="Horizontal"  Visibility="Collapsed">
+                <Label Content="Minőség:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_itemQualityFrom" FontSize="20"  Width="200" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="cb_itemQualityTo" FontSize="20"  Width="200" VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel x:Name="sp_itemRarity" Height="38" Orientation="Horizontal"  Visibility="Collapsed">
+                <Label Content="Ritkaság:" FontSize="20" Width="200" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_itemRarity" FontSize="20"  Width="400" VerticalContentAlignment="Center" SelectionChanged="cb_itemRarity_SelectionChanged"/>
+            </StackPanel>
+
+            <Label x:Name="lb_bonusStats" Content="Mágiksus statok:" FontSize="20" FontWeight="Bold" Margin="0,0,26,0"  Visibility="Visible"/>
+            <ScrollViewer x:Name="sv_bonusStats" Height="299"  Visibility="Visible">
+                <StackPanel MinHeight="222" Height="888">
+
+                    <StackPanel x:Name="sp_magicStats1" Height="892">
+
+                        <StackPanel Margin="20,0" Orientation="Horizontal" Height="880">
+                            <StackPanel Visibility="Visible" MinHeight="38" Orientation="Vertical" Width="380">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp1" Orientation="Horizontal" IsEnabled="True" Width="394">
+                                        <Label Content="Damage:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus1_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus1_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp2" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Damage %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus2_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus2_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp3" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Crit Damage %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus3_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus3_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp4" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Crit Hit Chance %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus4_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus4_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp5" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Defense:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus5_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus5_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp6" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Defense %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus6_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus6_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp7" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="DodgeChance %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus7_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus7_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp8" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Health:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus8_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus8_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp9" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Health %:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus9_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus9_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp10" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Strength:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus10_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus10_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp11" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Dexterity:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus11_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus11_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp12" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Vitality:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus12_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus12_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp13" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Luck:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus13_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus13_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp14" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Life Steal:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus14_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus14_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp15" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Reflect Damage:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus15_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus15_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp16" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Mana:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus16_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus16_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp17" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="ManaPercent:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus17_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus17_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp18" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="ManaRegeneration:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus18_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus18_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp19" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="HealthRegeneration:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus19_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus19_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp20" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="Intelligence:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus20_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus20_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp21" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="SpellPower:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus21_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus21_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel x:Name="sp22" Orientation="Horizontal" IsEnabled="True">
+                                        <Label Content="SpellPowerPercent:" FontSize="20" Width="240" Margin="10,0"/>
+                                        <TextBox x:Name="tb_bonus22_min" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                        <TextBox x:Name="tb_bonus22_max" Width="60" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+
+        <TextBlock x:Name="tb_itemImage" HorizontalAlignment="Left" Margin="10,263,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+        <DataGrid x:Name="dg_items" HorizontalAlignment="Left" Height="624" Margin="776,36,0,0" VerticalAlignment="Top" Width="582" SelectionChanged="dg_items_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Név" Width="SizeToCells" FontSize="15" Binding="{Binding item_name}"/>
+
+
+
+                <DataGridTemplateColumn Header="Kép" Width="SizeToCells" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="35" Height="35" Source="{Binding item_image}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Típus" Width="28" IsReadOnly="True" SortMemberPath="item_type" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="18" VerticalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding item_type}" Value="0">
+                                                <Setter Property="Text" Value="🗡️" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="1">
+                                                <Setter Property="Text" Value="👕" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="2">
+                                                <Setter Property="Text" Value="🧪" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="3">
+                                                <Setter Property="Text" Value="💰" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="4">
+                                                <Setter Property="Text" Value="🚮" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="5">
+                                                <Setter Property="Text" Value="📖" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding item_type}" Value="6">
+                                                <Setter Property="Text" Value="🧵" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn Header="S-" Width="SizeToCells" FontSize="15" Binding="{Binding item_primaryStat_damageMax_randomMin}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="S+" Width="SizeToCells" FontSize="15" Binding="{Binding item_primaryStat_damageMax_randomMax}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+
+                <DataGridTextColumn Header="V-" Width="SizeToCells" FontSize="15" Binding="{Binding item_primaryStat_defenseMax_randomMin}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Védelem minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Védelem minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="V-" Width="SizeToCells" FontSize="15" Binding="{Binding item_primaryStat_defenseMax_randomMax}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="I" Width="SizeToCells" FontSize="15" Binding="{Binding item_potionEffect}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Ital hatása" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Ital hatása" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Ii" Width="SizeToCells" FontSize="15" Binding="{Binding item_potionEffectDuration}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Ital hatás időtartama" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Ital hatás időtartama" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+
+                <DataGridTextColumn Header="B1-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus1_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="B1+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus1_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B2-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus1_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B2+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus1_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz sebzés % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B3-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus2_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B3+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus2_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B4-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus3_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés esély minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés esély minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B4+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus3_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés esély maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz kritikus sebzés esély maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B5-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus4_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz védelem minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz védelem minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B5+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus4_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz védelem maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz védelem maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B6-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus5_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz védelem % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz védelem % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B6+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus5_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz védelem % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz védelem % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B7-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus6_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz elkerülés % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz elkerülés % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B7+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus6_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz elkerülés % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz elkerülés % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B8-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus7_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz élet minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz élet minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B8+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus7_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz élet maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz élet maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B9-" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus8_min}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz élet % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz élet % minimum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+                <DataGridTextColumn Header="B9+" Width="SizeToCells" FontSize="15" Binding="{Binding item_bonus8_max}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="ToolTip" Value="Bónusz élet % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="Bónusz élet % maximum random" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+
+
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="bt_new" Content="Új" HorizontalAlignment="Left" Margin="563,828,0,0" VerticalAlignment="Top" Width="75" Click="bt_new_Click"/>
+        <Button x:Name="bt_save" Content="Ment" HorizontalAlignment="Left" Margin="643,828,0,0" VerticalAlignment="Top" Width="75" Click="bt_save_Click"/>
+        <CheckBox x:Name="cb_enableBonuses" Content="Bónusz statok mutatása" HorizontalAlignment="Left" Margin="776,10,0,0" VerticalAlignment="Top" Click="cb_enableBonuses_Click"/>
+        <Button x:Name="bt_copyImages" Content="Képek bemásolása" HorizontalAlignment="Left" Margin="776,828,0,0" VerticalAlignment="Top" Width="146" Click="bt_copyImages_Click"/>
+        <Button x:Name="bt_delete" Content="Töröl" HorizontalAlignment="Left" Margin="776,665,0,0" VerticalAlignment="Top" Width="75" Click="bt_delete_Click"/>
+    </Grid>
+</Window>
